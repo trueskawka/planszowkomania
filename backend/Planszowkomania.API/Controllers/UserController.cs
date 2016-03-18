@@ -8,40 +8,16 @@ using Planszowkomania.API.Models.Front;
 
 namespace Planszowkomania.API.Controllers
 {
-    public class UserController : ApiController
+    public class UserController : ControllerBase
     {
-        [HttpPost]
-        public IHttpActionResult Login(UserLoginModel userLoginModel)
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult Details()
         {
-            if (!ModelState.IsValid)
+            return Ok(new
             {
-                return BadRequest();
-            }
-
-            if (userLoginModel.UserName == "test" && userLoginModel.Password == "123qwe")
-            {
-                return Ok(new
-                {
-                    Token = "9384jw9vpv95g983",
-                    ExpiresIn = 60*60*24*30
-                });
-            }
-            else
-            {
-                return Conflict();
-            }
+                UserName = User.Identity.Name
+            });
         }
-
-        [HttpPost]
-        public IHttpActionResult Register(UserRegisterModel userRegisterModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
-            return Ok();
-        }
-
     }
 }

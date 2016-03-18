@@ -1,3 +1,7 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Planszowkomania.API.Models.Entities;
+
 namespace Planszowkomania.API.Migrations
 {
     using System;
@@ -14,18 +18,17 @@ namespace Planszowkomania.API.Migrations
 
         protected override void Seed(Planszowkomania.API.AppDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var manager = new UserManager<User>(new UserStore<User>(new AppDbContext()));
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var user = new User()
+            {
+                UserName = "test",
+                Email = "test@test.com",
+                EmailConfirmed = true,
+                JoinDate = DateTime.Now.AddYears(-3)
+            };
+
+            manager.Create(user, "123qwe");
         }
     }
 }
