@@ -9,7 +9,14 @@ namespace Planszowkomania.API.Models.Entities
 {
     public class User : IdentityUser
     {
+        public User()
+        {
+            Participations = new List<Participation>();
+        }
+
         [Required]
         public DateTime JoinDate { get; set; }
+
+        public ICollection<Participation> Participations { get; set; }
     }
 }

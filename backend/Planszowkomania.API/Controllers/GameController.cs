@@ -4,19 +4,21 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Planszowkomania.API.Models.Front;
 using Planszowkomania.API.Models.Results;
 
 namespace Planszowkomania.API.Controllers
 {
-    public class UserController : ControllerBase
+    public class GameController : ControllerBase
     {
+
         [HttpGet]
-        [Authorize]
-        public IHttpActionResult Details()
+        public IHttpActionResult All()
         {
-            var user = GetUser();
-            return Ok(new UserDetails(user));
+            var context = new AppDbContext();
+            var games = context.Games.ToList().Select(g => new GameResult(g)).ToList();
+            return Ok(games);
         }
+
+
     }
 }

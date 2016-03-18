@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Planszowkomania.API.Models.Entities;
 using Planszowkomania.API.Services;
 
 namespace Planszowkomania.API.Controllers
@@ -22,10 +23,12 @@ namespace Planszowkomania.API.Controllers
             }
         }
 
-        public ControllerBase()
+        protected User GetUser()
         {
+            var dbContext = new AppDbContext();
+            return dbContext.Users.Find(User.Identity.GetUserId());
         }
-
+        
         protected IHttpActionResult GetErrorResult(IdentityResult result)
         {
             if (result == null)

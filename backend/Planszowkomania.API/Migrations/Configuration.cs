@@ -29,6 +29,17 @@ namespace Planszowkomania.API.Migrations
             };
 
             manager.Create(user, "123qwe");
+
+
+            var game = new Game
+            {
+                Name = "Catan",
+                Image = "http://image.ceneo.pl/data/products/1719251/f-osadnicy-z-catanu.jpg?=69344"
+            };
+
+            context.Games.AddOrUpdate(g => g.Name, game);
+
+            context.SaveChanges();
         }
     }
 }

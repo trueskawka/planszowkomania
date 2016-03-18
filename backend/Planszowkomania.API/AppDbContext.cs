@@ -22,5 +22,9 @@ namespace Planszowkomania.API
             return new AppDbContext();
         }
 
+        public virtual DbSet<Table> Tables { get; set; }
+        public virtual DbSet<Participation> Participations { get; set; }
+        public virtual DbSet<Game> Games { get; set; }
+
     }
 }
