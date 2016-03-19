@@ -16,16 +16,17 @@ namespace Planszowkomania.API.Controllers
     public class TableController : ControllerBase
     {
         private readonly TableService _tableService;
+        private readonly AppDbContext _context;
         public TableController()
         {
             _tableService = new TableService();
+            _context = new AppDbContext();
         }
 
         [HttpGet]
         public IHttpActionResult Details(int id)
         {
-            var context = new AppDbContext();
-            var table = context.Tables.Find(id);
+            var table = _context.Tables.Find(id);
             if (table == null)
             {
                 return BadRequest("Table doesn't exist");
@@ -36,16 +37,13 @@ namespace Planszowkomania.API.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            using (var context = new AppDbContext())
-            {
-                var tables = context.Tables
-                    .Include(g => g.Game)
-                    .Include(g => g.Owner)
-                    .Include(g => g.Participations)
-                    .ToList()
-                    .Select(t => new TableResult(t)).ToList();
-                return Ok(tables);
-            }
+            var tables = _context.Tables
+                .Include(g => g.Game)
+                .Include(g => g.Owner)
+                .Include(g => g.Participations)
+                .ToList()
+                .Select(t => new TableResult(t)).ToList();
+            return Ok(tables);
         }
 
         [HttpGet]
@@ -53,9 +51,8 @@ namespace Planszowkomania.API.Controllers
         public IHttpActionResult UserTables()
         {
             var user = GetUser();
-            var context = new AppDbContext();
-            
-            var tables = context.Tables
+
+            var tables = _context.Tables
                 .Include(g => g.Game)
                 .Include(g => g.Owner)
                 .Include(g => g.Participations)
@@ -92,10 +89,8 @@ namespace Planszowkomania.API.Controllers
             }
 
             var user = GetUser();
-            var context = new AppDbContext();
 
-            //var table = context.Tables.Find(tableJoinModel.TableId);
-            var table = context.Tables
+            var table = _context.Tables
                 .Include(t => t.Game)
                 .Include(t => t.Owner)
                 .Include(t => t.Participations)
