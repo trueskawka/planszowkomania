@@ -13,6 +13,20 @@ var authorizedGet = function(apiPath, callback) {
   });
 }
 
+// Postowanie z autoryzacją
+var authorizedPost = function(apiPath, data, callback) {
+  var token = getAccessToken();
+  $.ajax({
+    url: serviceBase + apiPath,
+    type: 'POST',
+    data: data,
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader ("Authorization", "Bearer " + token);
+    },
+    success: callback
+  });
+}
+
 // Pobieranie access token z localStorage
 var getAccessToken = function() {
   var auth = localStorage.getItem('auth');
