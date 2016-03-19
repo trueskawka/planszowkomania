@@ -8,41 +8,7 @@ $( document ).ready(function() {
 
   fetchUserTables();
 
-    /*$.ajax({
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader ("Authorization", "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiJjOTdkYmVjNy1iZWUyLTQzYmItOGYwNy1hNWY0MjdkNWEyOWYiLCJ1bmlxdWVfbmFtZSI6ImphYmJlcndpY2tlZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYWNjZXNzY29udHJvbHNlcnZpY2UvMjAxMC8wNy9jbGFpbXMvaWRlbnRpdHlwcm92aWRlciI6IkFTUC5ORVQgSWRlbnRpdHkiLCJBc3BOZXQuSWRlbnRpdHkuU2VjdXJpdHlTdGFtcCI6ImRlMmE4MjQxLWZkYTctNDJiNC1hZWRjLTBhY2EyNmFkYWIxMCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6MjE0MCIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNDYwOTUwMjY0LCJuYmYiOjE0NTgzNTgyNjR9.qQF5kM-A4T64hE_zmazGeZc2rOmKQ-fHy-ah4xSD8mQ");
-      },
-      data: {
-        "description": "Wspaniala gra w Catana",
-        "eventDate": "2016-04-01 10:00:00",
-        "localizationName": "Paradox Cafe",
-        "city": "Warszawa",
-        "difficulty": 1,
-        "aggresionLevel": 2,
-        "usersRequired": 4,
-        "gameId": 1,
-      },
-      type: "POST",
-      url: "http://vpn.geeksoft.pl:2140/api/table/create",
-      success:
-      function(data){console.log(data)}
-    })*/
-
-    
-
-    /*$.ajax({
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader ("Authorization", "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1laWQiOiJjOTdkYmVjNy1iZWUyLTQzYmItOGYwNy1hNWY0MjdkNWEyOWYiLCJ1bmlxdWVfbmFtZSI6ImphYmJlcndpY2tlZCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYWNjZXNzY29udHJvbHNlcnZpY2UvMjAxMC8wNy9jbGFpbXMvaWRlbnRpdHlwcm92aWRlciI6IkFTUC5ORVQgSWRlbnRpdHkiLCJBc3BOZXQuSWRlbnRpdHkuU2VjdXJpdHlTdGFtcCI6ImRlMmE4MjQxLWZkYTctNDJiNC1hZWRjLTBhY2EyNmFkYWIxMCIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6MjE0MCIsImF1ZCI6IjQxNGUxOTI3YTM4ODRmNjhhYmM3OWY3MjgzODM3ZmQxIiwiZXhwIjoxNDYwOTUwMjY0LCJuYmYiOjE0NTgzNTgyNjR9.qQF5kM-A4T64hE_zmazGeZc2rOmKQ-fHy-ah4xSD8mQ");
-      },
-      type: "GET",
-      url: "http://vpn.geeksoft.pl:2140/api/table/UserTables",
-      success:
-      function(data){console.log(data)}
-
-    })*/
-
 });
-
 // Ustawianie buttonów do zapisywania się do stołu
 var setupSignupButtons = function() {
 
@@ -50,6 +16,16 @@ var setupSignupButtons = function() {
     var or = $(e.currentTarget);
     var parent = $(or).parents('.boxy')[0];
     var gr = $(parent).find('.btn-success');
+
+    var data = { "tableId": $(parent).data("tableid") };
+
+    authorizedPost("api/table/join", data, function(){
+      getUserDetails(function(data) {
+        var imurl = "../files/images/" + data.image;
+        var empty = $(parent).find(".empty-user").first()[0];
+        $(empty).css("background-image", "url("+imurl+")");
+        });
+    });
 
     or.addClass("hidden");
     gr.removeClass("hidden");
@@ -72,8 +48,10 @@ var fetchUserTables = function() {
   $.getJSON(serviceBase + 'api/table/all', function(data) {
 
     for (i = 0; i < data.length; i++) {
+      console.log(data[i]);
+
       var html = "";
-      html += "<div class='boxy'>";
+      html += "<div class='boxy' data-tableid='" + data[i].id + "'>";
       html += '<div class="game-content"><img src="../files/images/' + data[i].game.image + '"/>';
       html += '<div class="text-content"><div class="btn btn-warning btn-fab"><i class="fa fa-user-plus"></i></div><div class="btn btn-success btn-fab hidden"><i class="fa fa-check"></i></div><h4>' + data[i].game.name + '</h4><table>';
       html += '<tr><td class="lead-cl">Miejsce: </td><td>' + data[i].localizationName + '</td></tr>';
@@ -86,8 +64,8 @@ var fetchUserTables = function() {
           html+= '<div class="user"><img src="../files/images/' + data[i].participants[j].image + '" class="usrimg" / ></div>';
       }
 
-      if (data[i].participants.length < 4) {
-        for (k = 0; k < 4 - data[i].participants.length; k++) {
+      if (data[i].participants.length < data[i].usersRequired) {
+        for (k = 0; k < data[i].usersRequired - data[i].participants.length; k++) {
           html += '<div class="empty-user"></div>';
         }
       }
