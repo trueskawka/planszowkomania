@@ -2,6 +2,8 @@ body {
    font-family: 'Roboto' sans-serif;
 }
 
+.cleft {clear: both;}
+
 p {
   font-size: 20px;
   padding-bottom: 20px;
@@ -160,6 +162,8 @@ td {
 
 .users {
   text-align: justify;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .user, .empty-user {
@@ -189,8 +193,8 @@ td {
 
 .circle-icon {
   position: absolute;
-  right: 5px;
-  top: -30px;
+  right: 20px;
+  top: -40px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -212,3 +216,27 @@ td {
   font-size: 20px;
   line-height: 58px;
 }
+
+div.tables .searchbox {min-height: 80px; border-bottom: 1px solid #C3C3C3; padding: 0px 35px; position: relative;}
+div.tables .searchbox h1 {font-size: 20px; margin: 0; line-height: 80px; display: inline-block; font-weight: 500;}
+div.tables .searchbox h1 i {margin-right: 15px; color: #000;}
+
+div.tables .searchbox a.addToTable{position: absolute; right: 30px; padding: 5px; border-radius: 10px; padding: 10px 35px; background: #ff9900; color: #fff; font-size: 14px; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);}
+div.tables .searchbox a.addToTable:hover{text-decoration: none;}
+div.tables .content {background-color: #fff; padding: 50px; float: left; width: 100%;}
+div.tables .content img {display: block; float: left; max-width: 310px;}
+div.tables .content ul {display: inline-block; float: left; width: auto; margin-left: 50px; margin-bottom: 0;}
+div.tables .content ul li {display: block; height: 40px; font-weight: bold; line-height: 40px; margin: 0;}
+div.tables .content ul li span {font-weight: normal; display: inline-block; margin-right: 10px;}
+div.tables .content ul li a i {line-height: 20px; margin: 0 10px; color: #000;}
+div.tables .content h4 {margin: 30px 0; font-weight: bold;}
+div.tables .content p {padding: 0; margin: 0; font-size: 16px; line-height: 26px;}
+
+
+
+
+
+
+
+
+
