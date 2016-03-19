@@ -9,6 +9,7 @@ namespace Planszowkomania.API.Models.Results
 {
     public class TableResult
     {
+        public int Id { get { return _table.Id; } }
         public string Description { get { return _table.Description; } }
         public DateTime EventDate { get { return _table.EventDate; } }
         public string LocalizationName { get { return _table.LocalizationName; } }
@@ -19,7 +20,6 @@ namespace Planszowkomania.API.Models.Results
         public GameResult GameId { get { return new GameResult(_table.Game); } }
         public UserDetails Owner { get { return new UserDetails(_table.Owner); } }
         public List<ParticipantDetails> Participants { get { return _table.Participations.Select(p => new ParticipantDetails(p)).ToList(); } } 
-
 
         private readonly Table _table;
 

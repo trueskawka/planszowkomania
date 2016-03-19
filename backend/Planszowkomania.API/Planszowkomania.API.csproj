@@ -126,7 +126,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="index.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
@@ -149,6 +152,7 @@
     <Compile Include="Models\Entities\Table.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Front\TableCreateModel.cs" />
+    <Compile Include="Models\Front\TableJoinModel.cs" />
     <Compile Include="Models\Front\UserLoginModel.cs" />
     <Compile Include="Models\Front\UserRegisterModel.cs" />
     <Compile Include="Models\Results\GameResult.cs" />
@@ -162,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

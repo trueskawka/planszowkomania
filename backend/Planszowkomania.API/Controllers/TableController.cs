@@ -59,6 +59,29 @@ namespace Planszowkomania.API.Controllers
             return Ok(table.Id);
         }
 
+        [HttpPost]
+        [Authorize]
+        public IHttpActionResult Join(TableJoinModel tableJoinModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var user = GetUser();
+            var context = new AppDbContext();
+
+            var table = context.Tables.Find(tableJoinModel.TableId);
+
+            if (table == null)
+            {
+                return BadRequest("Wrong tableId");
+            }
+
+
+
+            return Ok();
+        }
 
     }
 }
