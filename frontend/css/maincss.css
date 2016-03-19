@@ -314,3 +314,14 @@ div.tables .content p {
   right: 5px;
   top: -30px;
 }
+
+.registration {
+  min-width: 180px;
+  display: inherit;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+  margin-top: 60px;
+}

@@ -35,9 +35,6 @@
     <!-- Roboto -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900' rel='stylesheet' type='text/css'>
 
-    <!-- geoplugin -->
-    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
-
     <style>
 
     </style>
@@ -52,14 +49,32 @@
 
     <div class="container">
 
+      <div class="col-xs-12 col-md-6 center">
+        <button class="btn btn-success btn-raised registration" id="reg">ZAREJESTRUJ SIĘ</button>
+        <button class="btn btn-primary btn-raised registration" id="log">ZALOGUJ SIĘ</button>
+      </div>
+
+      <div class="col-xs-12 col-md-6 hidden center" id="sigform">
       <form class="form-signin" id="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputUserName" class="sr-only">UserName</label>
+        <h2 class="form-signin-heading">Zaloguj się</h2>
+        <label for="inputUserName" class="sr-only">login</label>
         <input type="text" id="inputUserName" class="form-control" placeholder="UserName" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="inputPassword" class="sr-only">hasło</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-primary btn-raised registration" type="submit">ZALOGUJ SIĘ</button>
       </form>
+    </div>
+
+    <div class="col-xs-12 col-md-6 center" id="regform">
+      <form class="form-signin" id="form-register">
+        <h2 class="form-signin-heading">Zarejestruj się</h2>
+        <label for="inputUserName-reg" class="sr-only">login</label>
+        <input type="text" id="inputUserName-reg" class="form-control" placeholder="UserName" required autofocus>
+        <label for="inputPassword-reg" class="sr-only">hasło</label>
+        <input type="password" id="inputPassword-reg" class="form-control" placeholder="Password" required>
+        <button class="btn btn-success btn-raised registration" type="submit">ZAREJESTRUJ SIĘ</button>
+      </form>
+    </div>
 
     </div> <!-- /container -->
 
