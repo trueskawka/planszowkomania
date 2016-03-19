@@ -1,1 +1,0 @@
-var serviceBase = "http://vpn.geeksoft.pl:2140/";

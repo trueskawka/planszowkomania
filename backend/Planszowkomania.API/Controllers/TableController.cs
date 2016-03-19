@@ -22,6 +22,18 @@ namespace Planszowkomania.API.Controllers
         }
 
         [HttpGet]
+        public IHttpActionResult Details(int id)
+        {
+            var context = new AppDbContext();
+            var table = context.Tables.Find(id);
+            if (table == null)
+            {
+                return BadRequest("Table doesn't exist");
+            }
+            return Ok(new TableResult(table));
+        }
+
+        [HttpGet]
         public IHttpActionResult All()
         {
             var context = new AppDbContext();
