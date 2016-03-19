@@ -438,3 +438,18 @@ right: 5vh;
 checkbox {
   display: inline-block;
 }
+
+label > input{ /* HIDE RADIO */
+  display:none;
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
+  border:2px solid #009688;
+}
+.form-group {
+  margin-top: 0;
+  margin-bottom: 0;
+}

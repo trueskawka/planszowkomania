@@ -5,8 +5,11 @@ $( document ).ready(function() {
   });
 
   setupSignupButtons();
+  setupCreateTableForm();
 
   fetchUserTables();
+
+  fetchGames();
 
 });
 
@@ -93,4 +96,39 @@ var fetchUserTables = function() {
     }
 
   })
+}
+
+var fetchGames = function() {
+
+  $.getJSON(serviceBase + 'api/game/all', function(data) {
+    $.each(data, function(index, value) {
+      $("#game")
+          .append($("<option></option>")
+          .attr("value", value.id)
+          .text(value.name)); 
+    });
+  });
+
+}
+
+var setupCreateTableForm = function() {
+  $("#create-table").on('submit', function() {
+
+    var formData = {
+      description: $("#tableName").val(),
+      gameId: $("#game").val(),
+      city: $("#city").val(),
+      localizationName: $("#place").val(),
+      eventDate: $("#gamedate").val() + " " + $("#gameTime").val(),
+      difficulty: $("#difficulty-level").val(),
+      aggresionLevel: $('input[name=aggro]:checked', '#create-table').val(),
+      usersRequired: $("#usersCount").val()
+    };
+
+    authorizedPost('api/table/create', formData, function(data) {
+      window.location = "tables.html?id=" + data.id
+    });
+
+    return false;
+  });
 }
