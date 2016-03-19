@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Planszowkomania.API.Models.Entities;
@@ -19,7 +20,19 @@ namespace Planszowkomania.API.Models.Results
         public int UsersRequired { get { return _table.UsersRequired; } }
         public GameResult Game { get { return new GameResult(_table.Game); } }
         public UserDetails Owner { get { return new UserDetails(_table.Owner); } }
-        public List<ParticipantDetails> Participants { get { return _table.Participations.Select(p => new ParticipantDetails(p)).ToList(); } } 
+
+        public List<ParticipantDetails> Participants
+        {
+            get
+            {
+                var dbContext = new AppDbContext();
+                var participations = dbContext.Participations
+                    .Include(p => p.Participant)
+                    .Where(p => p.TableId == _table.Id)
+                    .ToList();
+                return participations.Select(p => new ParticipantDetails(p)).ToList();
+            }
+        }
 
         private readonly Table _table;
 

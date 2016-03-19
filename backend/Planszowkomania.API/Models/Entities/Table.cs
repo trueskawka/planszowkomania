@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -37,7 +38,11 @@ namespace Planszowkomania.API.Models.Entities
 
         public ICollection<Participation> Participations { get; set; }
 
+        public string OwnerId { get; set; }
+        [ForeignKey("OwnerId")]
         public User Owner { get; set; }
+        public int GameId { get; set; }
+        [ForeignKey("GameId")]
         public Game Game { get; set; }
 
     }
