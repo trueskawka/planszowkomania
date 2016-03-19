@@ -93,7 +93,7 @@ namespace Planszowkomania.API.Controllers
                 return BadRequest(ex.Message);
             }
 
-            return Ok();
+            return Ok("Successfully joined table");
         }
 
     }

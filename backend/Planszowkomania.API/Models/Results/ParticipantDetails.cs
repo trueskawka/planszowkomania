@@ -8,7 +8,7 @@ namespace Planszowkomania.API.Models.Results
 {
     public class ParticipantDetails
     {
-        public string Id { get { return _participation.Participant.Id; } }
+        public string Id { get { return _participation.ParticipantId; } }
         public string UserName { get { return _participation.Participant.UserName; } }
         public string Status { get { return _participation.Status.ToString(); } }
 
