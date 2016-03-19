@@ -6,8 +6,9 @@ $( document ).ready(function() {
 
   setupSignupButtons();
   setupCreateTableForm();
+  setupSearch();
 
-  fetchUserTables();
+  fetchTables();
 
   fetchGames();
 
@@ -60,11 +61,15 @@ var setupSignupButtons = function() {
 }
 
 // Pobieranie wszystkich stołów
-var fetchUserTables = function() {
+var fetchTables = function(city, date, game) {
 
   $.getJSON(serviceBase + 'api/table/all', function(data) {
 
     for (i = 0; i < data.length; i++) {
+
+      if (date && Math.abs(Date.parse(date) - Date.parse(data[i].eventDate)) > 86400000 ) continue;
+      if (city && city != data[i].city) continue;
+      if (game && game != data[i].game.id) continue;
 
       var html = "";
       html += "<div class='boxy' data-tableid='" + data[i].id + "'>";
@@ -102,7 +107,7 @@ var fetchGames = function() {
 
   $.getJSON(serviceBase + 'api/game/all', function(data) {
     $.each(data, function(index, value) {
-      $("#game")
+      $(".game")
           .append($("<option></option>")
           .attr("value", value.id)
           .text(value.name)); 
@@ -130,5 +135,29 @@ var setupCreateTableForm = function() {
     });
 
     return false;
+  });
+}
+
+var setupSearch = function() {
+  $("#search").on('click', function() {
+    var date = $("#search-date").val();
+    var city = $("#search-city").val();
+    var game = $("#search-game").val();
+
+    if (date == "") {
+      date = undefined;
+    }
+
+    if (city == "") {
+      city = undefined;
+    }
+
+    if (game == "all") {
+      game = undefined;
+    }
+
+    $(".rooms").empty();
+
+    fetchTables(city, date, game);
   });
 }
