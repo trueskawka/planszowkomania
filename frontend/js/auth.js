@@ -3,11 +3,13 @@ $( document ).ready(function() {
   $("#reg").on("click", function(){
     $("#sigform").addClass("hidden");
     $("#regform").removeClass("hidden");
+    $("#hello").addClass('hidden');
   })
 
   $("#log").on("click", function(){
     $("#regform").addClass("hidden");
     $("#sigform").removeClass("hidden");
+    $("#hello").addClass('hidden');
   })
 
   var signing = function(username, password) {

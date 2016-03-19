@@ -336,25 +336,25 @@ div.tables .content p {
 
 .tablePlayers .player {
   width: 31%;
-  height: 420px;
+  height: 320px;
   float: left;
   background-color: #f3f3f3;
   margin-bottom: 40px;
 }
 
-.tablePlayers .player .text { 
-  width: 100%; 
-  height: auto; 
+.tablePlayers .player .text {
+  width: 100%;
+  height: auto;
   float: left;
 }
 
-.tablePlayers .player .text img.playerImg { 
-  width: 120px; 
-  height: auto; 
-  display: block; 
-  margin: 0 auto; 
-  margin-top: 50px; 
-  float: none; 
+.tablePlayers .player .text img.playerImg {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  float: none;
 }
 .tablePlayers .player .bgImg {
   width: 100%;
