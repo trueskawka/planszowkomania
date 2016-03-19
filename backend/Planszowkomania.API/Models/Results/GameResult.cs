@@ -22,6 +22,11 @@ namespace Planszowkomania.API.Models.Results
             get { return _game.Image; }
         }
 
+        public string Description
+        {
+            get { return _game.Description; }
+        }
+
         private readonly Game _game;
         public GameResult(Game game)
         {
