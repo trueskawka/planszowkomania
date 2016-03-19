@@ -62,7 +62,10 @@ namespace Planszowkomania.API.Controllers
             }
             var table = tableCreateModel.GenerateTable(User.Identity.GetUserId());
 
-            return Ok(table.Id);
+            return Ok(new
+            {
+                Id = table.Id
+            });
         }
 
         [HttpPost]
@@ -93,7 +96,10 @@ namespace Planszowkomania.API.Controllers
                 return BadRequest(ex.Message);
             }
 
-            return Ok("Successfully joined table");
+            return Ok(new
+            {
+                Message = "Successfully joined table"
+            });
         }
 
     }
