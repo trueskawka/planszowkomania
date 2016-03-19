@@ -15,10 +15,10 @@
     <AssemblyName>Planszowkomania.API</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -146,6 +146,10 @@
     <Compile Include="Migrations\201603182240159_AddedTablesAndGames.Designer.cs">
       <DependentUpon>201603182240159_AddedTablesAndGames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603190354370_CorrectedParticipations.cs" />
+    <Compile Include="Migrations\201603190354370_CorrectedParticipations.Designer.cs">
+      <DependentUpon>201603190354370_CorrectedParticipations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Game.cs" />
     <Compile Include="Models\Entities\Participation.cs" />
@@ -163,6 +167,7 @@
     <Compile Include="Services\AppOAuthProvider.cs" />
     <Compile Include="Services\AppUserManager.cs" />
     <Compile Include="Services\CustomJwtFormat.cs" />
+    <Compile Include="Services\TableService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -184,6 +189,9 @@
     <EmbeddedResource Include="Migrations\201603182240159_AddedTablesAndGames.resx">
       <DependentUpon>201603182240159_AddedTablesAndGames.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603190354370_CorrectedParticipations.resx">
+      <DependentUpon>201603190354370_CorrectedParticipations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -200,7 +208,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50254</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4000</IISUrl>
+          <IISUrl>http://localhost:3380</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

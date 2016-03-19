@@ -17,7 +17,7 @@ namespace Planszowkomania.API.Models.Results
         public GameDifficulty Difficulty { get { return _table.Difficulty; } }
         public AggresionLevel AggresionLevel { get { return _table.AggresionLevel; } }
         public int UsersRequired { get { return _table.UsersRequired; } }
-        public GameResult GameId { get { return new GameResult(_table.Game); } }
+        public GameResult Game { get { return new GameResult(_table.Game); } }
         public UserDetails Owner { get { return new UserDetails(_table.Owner); } }
         public List<ParticipantDetails> Participants { get { return _table.Participations.Select(p => new ParticipantDetails(p)).ToList(); } } 
 

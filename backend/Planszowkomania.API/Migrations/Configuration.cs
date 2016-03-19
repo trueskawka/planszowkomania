@@ -30,16 +30,24 @@ namespace Planszowkomania.API.Migrations
 
             manager.Create(user, "123qwe");
 
-
-            var game = new Game
-            {
-                Name = "Catan",
-                Image = "http://image.ceneo.pl/data/products/1719251/f-osadnicy-z-catanu.jpg?=69344"
-            };
-
-            context.Games.AddOrUpdate(g => g.Name, game);
+            AddGame(context, "Carcassonne", "carcassonne.jpg");
+            AddGame(context, "Twilight Imperium", "twilight.jpg");
+            AddGame(context, "Gra o tron", "thrones.jpg");
+            AddGame(context, "Tzlokin", "tzolkin.jpg");
+            AddGame(context, "Œwiat dysku", "discworld.jpg");
+            AddGame(context, "Osadnicy z Catanu", "catan.jpg");
 
             context.SaveChanges();
+        }
+
+        private void AddGame(AppDbContext context, string name, string image)
+        {
+            var game = new Game
+            {
+                Name = name,
+                Image = image
+            };
+            context.Games.AddOrUpdate(g => g.Name, game);
         }
     }
 }

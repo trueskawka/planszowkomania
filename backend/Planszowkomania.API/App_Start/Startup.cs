@@ -49,8 +49,7 @@ namespace Planszowkomania.API
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(30),
                 Provider = new AppOAuthProvider(),
-                //AccessTokenFormat = new CustomJwtFormat("http://172.20.10.3:4000")
-                AccessTokenFormat = new CustomJwtFormat("http://10.3.7.239:4000")
+                AccessTokenFormat = new CustomJwtFormat("http://localhost:2140")
             };
 
             // OAuth 2.0 Bearer Access Token Generation
@@ -59,8 +58,7 @@ namespace Planszowkomania.API
 
         private void ConfigureOAuthTokenConsumption(IAppBuilder app) {
 
-            //var issuer = "http://172.20.10.3:4000";
-            var issuer = "http://10.3.7.239:4000";
+            var issuer = "http://localhost:2140";
             string audienceId = ConfigurationManager.AppSettings["as:AudienceId"];
             byte[] audienceSecret = TextEncodings.Base64Url.Decode(ConfigurationManager.AppSettings["as:AudienceSecret"]);
  
