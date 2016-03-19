@@ -46,7 +46,7 @@ $(document).ready(function(){
           html += "<div class='player' data-playerid='" + data.id + "'>";
           html += '<div class="text"><img class="playerImg" src="../files/images/' + data.image + '" />';
           html += '<h4>'+data.userName + '</h4>';
-          html += '<div class="buttons"><button class="btn btn-raised btn-warning">Odrzuć</button></div><button class="btn btn-raised btn-success">Zaakceptuj</button>';
+          html += '<div class="buttons"><button class="btn btn-raised btn-warning">Odrzuć</button><button class="btn btn-raised btn-success">Zaakceptuj</button></div>';
           html += '</div></div>';
 
           $("#pendingInv").append(html);

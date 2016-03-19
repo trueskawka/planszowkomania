@@ -453,3 +453,8 @@ label > input:checked + img{ /* (CHECKED) IMAGE STYLES */
   margin-top: 0;
   margin-bottom: 0;
 }
+
+#gameDesc {
+  max-height: 200px;
+  overflow: scroll;
+}
