@@ -1,7 +1,10 @@
+var current_user;
+
 $( document ).ready(function() {
 
   getUserDetails(function(data) {
     $('#name').text(data.userName);
+    current_user = data.id;
   });
 
   setupSignupButtons();
@@ -74,7 +77,7 @@ var fetchTables = function(city, date, game) {
       var html = "";
       html += "<div class='boxy' data-tableid='" + data[i].id + "'>";
       html += '<div class="game-content"><a href="tables.html?id='+ data[i].id +'"><img src="../files/images/' + data[i].game.image + '"/></a>';
-      html += '<div class="text-content"><div class="btn btn-warning btn-fab"><i class="fa fa-user-plus"></i></div><div class="btn btn-success btn-fab hidden"><i class="fa fa-check"></i></div><h4>' + data[i].game.name + '</h4><table>';
+      html += '<div class="text-content"><div class="btn btn-warning btn-fab"><i class="fa fa-user-plus"></i></div><div class="btn btn-success btn-fab"><i class="fa fa-check"></i></div><h4>' + data[i].game.name + '</h4><table>';
       html += '<tr><td class="lead-cl">Miejsce: </td><td>' + data[i].localizationName + '</td></tr>';
       html += '<tr><td class="lead-cl">Termin: </td><td>' + data[i].eventDate + '</td></tr>';
       html += '<tr><td class="lead-cl">Poziom gry: </td><td>' + data[i].difficulty + '</td></tr>';
@@ -96,6 +99,21 @@ var fetchTables = function(city, date, game) {
       }
 
       html += '</div></div></div></div>';
+
+      var joined = false;
+      for (j = 0; j < data[i].participants.length; j++) {
+        if (data[i].participants[j].id == current_user) joined = true;
+      }
+
+      html = $(html);
+
+      if (joined) {
+        var warning = html.find(".btn-warning")[0];
+        $(warning).addClass("hidden");
+      } else {
+        var success = html.find(".btn-success")[0];
+        $(success).addClass("hidden");
+      }
 
       $(".rooms").append(html);
     }
