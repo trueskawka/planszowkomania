@@ -56,7 +56,7 @@ namespace Planszowkomania.API.Controllers
         [Authorize]
         public IHttpActionResult Create(TableCreateModel tableCreateModel)
         {
-            if (!ModelState.IsValid && tableCreateModel == null)
+            if (!ModelState.IsValid || tableCreateModel == null)
             {
                 return BadRequest();
             }
@@ -69,7 +69,7 @@ namespace Planszowkomania.API.Controllers
         [Authorize]
         public IHttpActionResult Join(TableJoinModel tableJoinModel)
         {
-            if (!ModelState.IsValid && tableJoinModel == null)
+            if (!ModelState.IsValid || tableJoinModel == null)
             {
                 return BadRequest();
             }
