@@ -187,28 +187,14 @@ td {
   border-radius: 50%;
 }
 
-.circle-icon {
-  position: absolute;
-  right: 5px;
-  top: -30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  justify-content: center;
-  display: flex;
-  vertical-align: middle;
-}
-
-.orange {
-    background-color: rgb(255, 87, 34);
-}
-
-.green {
-  background-color: rgb(76, 175, 80);
-}
-
 .fa {
   color: #fff;
   font-size: 20px;
   line-height: 58px;
+}
+
+.btn.btn-fab {
+  position: absolute;
+  right: 5px;
+  top: -30px;
 }
