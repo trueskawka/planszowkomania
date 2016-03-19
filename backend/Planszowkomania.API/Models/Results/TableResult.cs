@@ -18,15 +18,36 @@ namespace Planszowkomania.API.Models.Results
         public GameDifficulty Difficulty { get { return _table.Difficulty; } }
         public AggresionLevel AggresionLevel { get { return _table.AggresionLevel; } }
         public int UsersRequired { get { return _table.UsersRequired; } }
-        public GameResult Game { get { return new GameResult(_table.Game); } }
-        public UserDetails Owner { get { return new UserDetails(_table.Owner); } }
+
+        public GameResult Game
+        {
+            get
+            {
+                if (_table.Game == null)
+                {
+                    return new GameResult(_context.Games.Find(_table.GameId));
+                }
+                return new GameResult(_table.Game);
+            }
+        }
+
+        public UserDetails Owner
+        {
+            get
+            {
+                if (_table.Owner == null)
+                {
+                    return new UserDetails(_context.Users.Find(_table.OwnerId));
+                }
+                return new UserDetails(_table.Owner);
+            }
+        }
 
         public List<ParticipantDetails> Participants
         {
             get
             {
-                var dbContext = new AppDbContext();
-                var participations = dbContext.Participations
+                var participations = _context.Participations
                     .Include(p => p.Participant)
                     .Where(p => p.TableId == _table.Id)
                     .ToList();
@@ -35,10 +56,12 @@ namespace Planszowkomania.API.Models.Results
         }
 
         private readonly Table _table;
+        private readonly AppDbContext _context;
 
         public TableResult(Table table)
         {
             _table = table;
+            _context = AppDbContext.Create();
         }
     }
 }

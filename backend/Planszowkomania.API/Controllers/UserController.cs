@@ -33,7 +33,8 @@ namespace Planszowkomania.API.Controllers
             {
                 Email = userRegisterModel.Email,
                 UserName = userRegisterModel.UserName,
-                JoinDate = DateTime.UtcNow
+                JoinDate = DateTime.UtcNow,
+                Image = "avatar.jpg"
             }, userRegisterModel.Password);
 
             if (!result.Succeeded)
