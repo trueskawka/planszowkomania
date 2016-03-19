@@ -65,7 +65,7 @@ var fetchUserTables = function() {
 
       var html = "";
       html += "<div class='boxy' data-tableid='" + data[i].id + "'>";
-      html += '<div class="game-content"><img src="../files/images/' + data[i].game.image + '"/>';
+      html += '<div class="game-content"><a href="tables.html?id='+ data[i].id +'"><img src="../files/images/' + data[i].game.image + '"/></a>';
       html += '<div class="text-content"><div class="btn btn-warning btn-fab"><i class="fa fa-user-plus"></i></div><div class="btn btn-success btn-fab hidden"><i class="fa fa-check"></i></div><h4>' + data[i].game.name + '</h4><table>';
       html += '<tr><td class="lead-cl">Miejsce: </td><td>' + data[i].localizationName + '</td></tr>';
       html += '<tr><td class="lead-cl">Termin: </td><td>' + data[i].eventDate + '</td></tr>';

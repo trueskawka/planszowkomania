@@ -40,8 +40,67 @@
 
   <body>
 
+    <button class="btn btn-warning btn-fab" id="add-table" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button>
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Nowy stół - parametry</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group is-empty">
+            <label class="control-label" for="tableName">Nazwa stołu</label>
+            <input type="game" class="form-control" id="tableName">
+          </div>
+          <div class="form-group is-empty">
+          <label class="control-label" for="gameName">Nazwa gry</label>
+          <input type="game" class="form-control" id="gameName">
+        </div>
+          <div class="form-group is-empty col-xs-12 col-md-6">
+          <label class="control-label" for="city">Miasto</label>
+            <input type="city" class="form-control" id="city">
+          </div>
+            <div class="form-group is-empty col-xs-12 col-md-6">
+            <label class="control-label" for="place">Miejsce</label>
+            <input type="place" class="form-control" id="place">
+          </div>
+            <div class="form-group is-empty col-xs-12 col-md-6">
+            <label class="control-label" for="gamedate">Termin</label>
+            <input type="date" class="form-control" id="gamedate">
+          </div>
+            <div class="form-group is-empty col-xs-12 col-md-6">
+            <label class="control-label" for="gameTime">Godzina</label>
+            <input type="time" class="form-control" id="gameTime" >
+          </div>
+            <div class="form-group is-empty col-xs-12 col-md-6">
+            <label class="control-label" for="difficulty-level">Poziom trudności</label>
+            <select type="difficulty-level" class="form-control" id="difficulty-level" placeholder="Poziom trudności">
+              <option value="0">początkujący</option>
+              <option value="1">średni</option>
+              <option value="2">zaawansowany</option>
+            </select>
+            </div>
+            <div class="form-group is-empty col-xs-12 col-md-6">
+              <label class="control-label" for="aggro-level">Poziom agresji</label>
+              <div id="aggro">
+              <label><input type="checkbox"  value="0"><img src="../files/images/america.png" class="mini-img"></label>
+              <label><input type="checkbox"  value="0"><img src="../files/images/deadpool.jpg" class="mini-img"></label>
+              <label><input type="checkbox"  value="0"><img src="../files/images/wolverine.jpg" class="mini-img"></label>
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+            <button type="button" class="btn btn-primary">Zaproś</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="navigation navbar">
-      <strong>BoardUp - Hej, <span id="name"></span>!</strong>
+      <strong>BoardUp</strong>
       <button class="btn btn-raised btn-danger pull-right logout"<a href="#" id="logout">Wyloguj</a></button>
     </div>
 

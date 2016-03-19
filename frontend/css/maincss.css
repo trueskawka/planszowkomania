@@ -334,11 +334,11 @@ div.tables .content p {
   width: 100%;
 }
 
-.tablePlayers .player { 
-  width: 31%; 
-  height: 420px; 
-  float: left; 
-  background-color: #f3f3f3; 
+.tablePlayers .player {
+  width: 31%;
+  height: 420px;
+  float: left;
+  background-color: #f3f3f3;
   margin-bottom: 40px;
 }
 
@@ -355,21 +355,41 @@ div.tables .content p {
   margin: 0 auto; 
   margin-top: 50px; 
   float: none; 
+}
+.tablePlayers .player .bgImg {
+  width: 100%;
+  height: 110px;
+  float: left;
+}
+
+.tablePlayers .player .text {
+  width: 100%;
+  height: auto;
+  float: left;
+}
+
+.tablePlayers .player .text img.playerImg {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  float: none;
   border-radius: 25px;
 }
 
-.tablePlayers .player .text h4 { 
-  width: 100%; 
+.tablePlayers .player .text h4 {
+  width: 100%;
   text-align: center;
 }
 
-.tablePlayers .player .text p { 
-  width: 100%; 
+.tablePlayers .player .text p {
+  width: 100%;
   text-align: center;
 }
 
-.tablePlayers .player .text .buttons { 
-  width: 100%; 
+.tablePlayers .player .text .buttons {
+  width: 100%;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -382,19 +402,39 @@ div.tables .content p {
   margin: 30px auto 0;
 }
 
-.tablePlayers .player .text .buttons a { 
-  width: 40%; 
-  text-align: center; 
-  display: block; 
-  padding: 10px 0; 
-  border-radius: 5px; 
+.tablePlayers .player .text .buttons a {
+  width: 40%;
+  text-align: center;
+  display: block;
+  padding: 10px 0;
+  border-radius: 5px;
   color: #fff;
 }
 
-.tablePlayers .player .text .buttons a.accept { 
+.tablePlayers .player .text .buttons a.accept {
   background-color: green;
 }
 
-.tablePlayers .player .text .buttons a.cancel, a.delete { 
+.tablePlayers .player .text .buttons a.cancel, a.delete {
   background-color: red;
+}
+
+#add-table {
+  height: 70px;
+  width: 70px;
+  position: fixed;
+z-index: 1000;
+top: 80vh;
+right: 5vh;
+}
+
+.mini-img {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+checkbox {
+  display: inline-block;
 }
