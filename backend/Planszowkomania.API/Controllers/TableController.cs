@@ -47,9 +47,8 @@ namespace Planszowkomania.API.Controllers
                 .Include(g => g.Participations)
                 .ToList();
 
-            var tableResults = (from t in tables from p in t.Participations where p.Participant.Id == user.Id select new TableResult(t)).ToList();
+            var tableResults = (from t in tables from p in t.Participations where p.ParticipantId == user.Id select new TableResult(t)).ToList();
 
-            //.Select(t => new TableResult(t)).ToList();
             return Ok(tableResults);
         }
 
@@ -57,7 +56,7 @@ namespace Planszowkomania.API.Controllers
         [Authorize]
         public IHttpActionResult Create(TableCreateModel tableCreateModel)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid && tableCreateModel == null)
             {
                 return BadRequest();
             }
@@ -70,7 +69,7 @@ namespace Planszowkomania.API.Controllers
         [Authorize]
         public IHttpActionResult Join(TableJoinModel tableJoinModel)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid && tableJoinModel == null)
             {
                 return BadRequest();
             }

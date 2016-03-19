@@ -22,19 +22,17 @@ namespace Planszowkomania.API.Services
                 throw new Exception("Wrong tableId");
             }
 
-            if (table.Participations.Any(p => p.Participant.Id == user.Id))
+            if (table.Participations.Any(p => p.ParticipantId == user.Id))
             {
                 throw new Exception("Already joined");
             }
 
             var participation = new Participation
             {
-                Participant = user,
+                ParticipantId = user.Id,
                 Status = AcceptanceStatus.Pending,
-                Table = table
+                TableId = table.Id
             };
-
-            table.Participations.Add(participation);
 
             _context.Participations.Add(participation);
             _context.SaveChanges();

@@ -150,6 +150,14 @@
     <Compile Include="Migrations\201603190354370_CorrectedParticipations.Designer.cs">
       <DependentUpon>201603190354370_CorrectedParticipations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603190411176_AddedImageToUser.cs" />
+    <Compile Include="Migrations\201603190411176_AddedImageToUser.Designer.cs">
+      <DependentUpon>201603190411176_AddedImageToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603190422581_FixedIds.cs" />
+    <Compile Include="Migrations\201603190422581_FixedIds.Designer.cs">
+      <DependentUpon>201603190422581_FixedIds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Game.cs" />
     <Compile Include="Models\Entities\Participation.cs" />
@@ -191,6 +199,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603190354370_CorrectedParticipations.resx">
       <DependentUpon>201603190354370_CorrectedParticipations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603190411176_AddedImageToUser.resx">
+      <DependentUpon>201603190411176_AddedImageToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603190422581_FixedIds.resx">
+      <DependentUpon>201603190422581_FixedIds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

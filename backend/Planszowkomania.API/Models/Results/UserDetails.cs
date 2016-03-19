@@ -9,8 +9,9 @@ namespace Planszowkomania.API.Models.Results
     public class UserDetails
     {
         public string Id { get { return _user.Id; } }
-        public string UserName { get { return _user.UserName; }}
+        public string UserName { get { return _user.UserName; } }
         public DateTime JoinDate { get { return _user.JoinDate; } }
+        public string Image { get { return _user.Image; } }
 
         private readonly User _user;
 

@@ -16,19 +16,42 @@ namespace Planszowkomania.API.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Planszowkomania.API.AppDbContext context)
+        protected override void Seed(AppDbContext context)
         {
             var manager = new UserManager<User>(new UserStore<User>(new AppDbContext()));
 
-            var user = new User()
+            var user = new User
             {
                 UserName = "test",
                 Email = "test@test.com",
                 EmailConfirmed = true,
-                JoinDate = DateTime.Now.AddYears(-3)
+                JoinDate = DateTime.Now.AddYears(-1),
+                Image = "avatar.jpg"
             };
 
             manager.Create(user, "123qwe");
+
+            user = new User
+            {
+                UserName = "kelu",
+                Email = "kelostrada@gmail.com",
+                EmailConfirmed = true,
+                JoinDate = DateTime.Now.AddYears(-2),
+                Image = "avatar.jpg"
+            };
+
+            manager.Create(user, "123qwe");
+
+            user = new User
+            {
+                UserName = "jabberwicked",
+                Email = "varena@vp.pl",
+                EmailConfirmed = true,
+                JoinDate = DateTime.Now.AddYears(-3),
+                Image = "avatar.jpg"
+            };
+
+            manager.Create(user, "123qwer");
 
             AddGame(context, "Carcassonne", "carcassonne.jpg");
             AddGame(context, "Twilight Imperium", "twilight.jpg");
