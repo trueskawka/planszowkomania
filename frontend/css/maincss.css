@@ -185,6 +185,7 @@ td {
 
 .empty-user {
   background-color: gray;
+  opacity: .4;
   background-size: 50px 50px;
   display: inline-block;
   width: 50px;
