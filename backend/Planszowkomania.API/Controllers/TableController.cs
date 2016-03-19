@@ -9,11 +9,18 @@ using Microsoft.AspNet.Identity;
 using Planszowkomania.API.Models.Entities;
 using Planszowkomania.API.Models.Front;
 using Planszowkomania.API.Models.Results;
+using Planszowkomania.API.Services;
 
 namespace Planszowkomania.API.Controllers
 {
     public class TableController : ControllerBase
     {
+        private readonly TableService _tableService;
+        public TableController()
+        {
+            _tableService = new TableService();
+        }
+
         [HttpGet]
         public IHttpActionResult All()
         {
@@ -73,12 +80,14 @@ namespace Planszowkomania.API.Controllers
 
             var table = context.Tables.Find(tableJoinModel.TableId);
 
-            if (table == null)
+            try
             {
-                return BadRequest("Wrong tableId");
+                _tableService.Join(user, table);
             }
-
-
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
             return Ok();
         }

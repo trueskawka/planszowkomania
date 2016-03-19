@@ -163,6 +163,7 @@
     <Compile Include="Services\AppOAuthProvider.cs" />
     <Compile Include="Services\AppUserManager.cs" />
     <Compile Include="Services\CustomJwtFormat.cs" />
+    <Compile Include="Services\TableService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
