@@ -1,4 +1,11 @@
 $( document ).ready(function() {
+
+  getUserDetails(function(data) {
+    $('#name').text(data.userName);
+  });
+
+
+
     $(".boxy").each(function(){
       var or = $(this).find(".btn-warning");
       var gr = $(this).find(".btn-success");
@@ -84,3 +91,42 @@ $( document ).ready(function() {
 
 
 });
+
+// Podmianka za $.getJSON tyle że z access_tokenem
+var authorizedGet = function(apiPath, callback) {
+  var token = getAccessToken();
+  $.ajax({
+    url: serviceBase + apiPath,
+    type: 'GET',
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader ("Authorization", "Bearer " + token);
+    },
+    success: callback
+  });
+}
+
+// Pobieranie access token z localStorage
+var getAccessToken = function() {
+  var auth = localStorage.getItem('auth');
+  if (auth) {
+    auth = JSON.parse(auth);
+    return auth.access_token;
+  } else {
+    window.location = "login.html";
+  }
+};
+
+// Pobieranie detali zalogowanego użytkownika
+var getUserDetails = function(callback) {
+  authorizedGet('api/user/details', callback);
+};
+
+// Ustawianie buttonów do zapisywania się do stołu
+var setupSignupButtons = function() {
+
+}
+
+// Pobieranie wszystkich stołów
+var fetchUserTables = function() {
+
+}

@@ -8,14 +8,14 @@ $( document ).ready(function() {
     var data = "grant_type=password&username=" + username + "&password=" + password;
 
     $.ajax({
-      url: 'http://vpn.geeksoft.pl:2140/oauth/token',
+      url: serviceBase + 'oauth/token',
       type: 'POST',
       data: data,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function(data) {
-        localStorage.setItem('auth', data);
+        localStorage.setItem('auth', JSON.stringify(data));
         window.location = "index.html"
       }
     });
