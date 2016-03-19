@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201603190422581_FixedIds.Designer.cs">
       <DependentUpon>201603190422581_FixedIds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603191410236_AddDescriptionToGame.cs" />
+    <Compile Include="Migrations\201603191410236_AddDescriptionToGame.Designer.cs">
+      <DependentUpon>201603191410236_AddDescriptionToGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Game.cs" />
     <Compile Include="Models\Entities\Participation.cs" />
@@ -206,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603190422581_FixedIds.resx">
       <DependentUpon>201603190422581_FixedIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603191410236_AddDescriptionToGame.resx">
+      <DependentUpon>201603191410236_AddDescriptionToGame.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
