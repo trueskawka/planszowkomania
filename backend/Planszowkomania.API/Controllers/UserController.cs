@@ -21,6 +21,15 @@ namespace Planszowkomania.API.Controllers
             return Ok(new UserDetails(user));
         }
 
+        [HttpGet]
+        public IHttpActionResult Details(string id)
+        {
+            var context = AppDbContext.Create();
+            var user = context.Users.Find(id);
+            return Ok(new UserDetails(user));
+        }
+
+
         [HttpPost]
         public async Task<IHttpActionResult> Register(UserRegisterModel userRegisterModel)
         {

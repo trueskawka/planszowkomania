@@ -36,14 +36,16 @@ namespace Planszowkomania.API.Controllers
         [HttpGet]
         public IHttpActionResult All()
         {
-            var context = new AppDbContext();
-            var tables = context.Tables
-                .Include(g => g.Game)
-                .Include(g => g.Owner)
-                .Include(g => g.Participations)
-                .ToList()
-                .Select(t => new TableResult(t)).ToList();
-            return Ok(tables);
+            using (var context = new AppDbContext())
+            {
+                var tables = context.Tables
+                    .Include(g => g.Game)
+                    .Include(g => g.Owner)
+                    .Include(g => g.Participations)
+                    .ToList()
+                    .Select(t => new TableResult(t)).ToList();
+                return Ok(tables);
+            }
         }
 
         [HttpGet]
@@ -114,5 +116,62 @@ namespace Planszowkomania.API.Controllers
             });
         }
 
+        [HttpPost]
+        [Authorize]
+        public IHttpActionResult Accept(TableAcceptUser tableAcceptUser)
+        {
+            if (!ModelState.IsValid || tableAcceptUser == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _tableService.HandleUser(User.Identity.GetUserId(), tableAcceptUser.UserId, tableAcceptUser.TableId, true);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IHttpActionResult Reject(TableAcceptUser tableAcceptUser)
+        {
+            if (!ModelState.IsValid || tableAcceptUser == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _tableService.HandleUser(User.Identity.GetUserId(), tableAcceptUser.UserId, tableAcceptUser.TableId, false);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IHttpActionResult Leave(int id)
+        {
+            try
+            {
+                _tableService.Leave(User.Identity.GetUserId(), id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
+        }
     }
 }

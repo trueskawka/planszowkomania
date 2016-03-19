@@ -163,6 +163,7 @@
     <Compile Include="Models\Entities\Participation.cs" />
     <Compile Include="Models\Entities\Table.cs" />
     <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\Front\TableAcceptUser.cs" />
     <Compile Include="Models\Front\TableCreateModel.cs" />
     <Compile Include="Models\Front\TableJoinModel.cs" />
     <Compile Include="Models\Front\UserLoginModel.cs" />
