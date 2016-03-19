@@ -78,7 +78,12 @@ namespace Planszowkomania.API.Controllers
             var user = GetUser();
             var context = new AppDbContext();
 
-            var table = context.Tables.Find(tableJoinModel.TableId);
+            //var table = context.Tables.Find(tableJoinModel.TableId);
+            var table = context.Tables
+                .Include(t => t.Game)
+                .Include(t => t.Owner)
+                .Include(t => t.Participations)
+                .FirstOrDefault(t => t.Id == tableJoinModel.TableId);
 
             try
             {

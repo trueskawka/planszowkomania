@@ -146,6 +146,10 @@
     <Compile Include="Migrations\201603182240159_AddedTablesAndGames.Designer.cs">
       <DependentUpon>201603182240159_AddedTablesAndGames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603190354370_CorrectedParticipations.cs" />
+    <Compile Include="Migrations\201603190354370_CorrectedParticipations.Designer.cs">
+      <DependentUpon>201603190354370_CorrectedParticipations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entities\Game.cs" />
     <Compile Include="Models\Entities\Participation.cs" />
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603182240159_AddedTablesAndGames.resx">
       <DependentUpon>201603182240159_AddedTablesAndGames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603190354370_CorrectedParticipations.resx">
+      <DependentUpon>201603190354370_CorrectedParticipations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

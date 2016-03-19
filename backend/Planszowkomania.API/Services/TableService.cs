@@ -33,6 +33,9 @@ namespace Planszowkomania.API.Services
                 Status = AcceptanceStatus.Pending,
                 Table = table
             };
+
+            table.Participations.Add(participation);
+
             _context.Participations.Add(participation);
             _context.SaveChanges();
         }
