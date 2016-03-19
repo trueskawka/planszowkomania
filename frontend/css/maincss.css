@@ -239,23 +239,13 @@ div.tables .searchbox h1 i {
   color: #000;
 }
 
-div.tables .searchbox a.addToTable{
+div.tables .searchbox button {
+  right: 35px;
   position: absolute;
-  right: 30px;
-  padding: 5px;
-  border-radius: 10px;
-  padding: 10px 35px;
-  background: #ff9900;
-  color: #fff;
-  font-size: 14px;
-  top: 50%;
+  top: 40%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-div.tables .searchbox a.addToTable:hover{
-  text-decoration: none;
 }
 
 div.tables .content {
@@ -352,12 +342,6 @@ div.tables .content p {
   margin-bottom: 40px;
 }
 
-.tablePlayers .player .bgImg { 
-  width: 100%; 
-  height: 110px; 
-  float: left;
-}
-
 .tablePlayers .player .text { 
   width: 100%; 
   height: auto; 
@@ -365,8 +349,8 @@ div.tables .content p {
 }
 
 .tablePlayers .player .text img.playerImg { 
-  width: 100px; 
-  height: 100px; 
+  width: 120px; 
+  height: auto; 
   display: block; 
   margin: 0 auto; 
   margin-top: 50px; 
