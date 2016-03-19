@@ -10,6 +10,7 @@ namespace Planszowkomania.API.Models.Results
     {
         public string Id { get { return _participation.ParticipantId; } }
         public string UserName { get { return _participation.Participant.UserName; } }
+        public string Image { get { return _participation.Participant.Image; } }
         public string Status { get { return _participation.Status.ToString(); } }
 
         private readonly Participation _participation;
